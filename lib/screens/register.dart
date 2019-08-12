@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class _RegisterState extends State<Register> {
   Color textColor = Colors.blueGrey[700];
   final formKey = GlobalKey<FormState>();
   String name, email, password;
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   //method
   Widget registerButton() {
@@ -20,9 +22,36 @@ class _RegisterState extends State<Register> {
         if (formKey.currentState.validate()) {
           formKey.currentState.save();
           print('name = $name, email = $email, password = $password');
+          registerThread();
         }
       },
     );
+  }
+
+  Future<void> registerThread() async {
+    await firebaseAuth
+        .createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    )
+        .then((response) {
+      setupDisplayName();
+    }).catchError((response) {
+      print('response = ${response.toString()}');
+    });
+  }
+
+  Future<void> setupDisplayName() async {
+    FirebaseUser firebaseUser = await firebaseAuth.currentUser();
+    UserUpdateInfo userUpdateInfo = UserUpdateInfo();
+    userUpdateInfo.displayName = name;
+    firebaseUser.updateProfile(userUpdateInfo);
+
+    // สร้างหน้าแบบไม่มีถอยหลังกลับ
+    // MaterialPageRoute materialPageRoute =
+    //     MaterialPageRoute(builder: (BuildContext context) => MyService());
+    // Navigator.of(context)
+    //     .pushAndRemoveUntil(materialPageRoute, (Route<dynamic> route) => false);
   }
 
   Widget nameText() {

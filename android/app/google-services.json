@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "622755844828",
+    "firebase_url": "https://practiceflutter-cadf8.firebaseio.com",
+    "project_id": "practiceflutter-cadf8",
+    "storage_bucket": "practiceflutter-cadf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622755844828:android:aa436d97d0a69750",
+        "android_client_info": {
+          "package_name": "com.winnerenglish.homevdo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622755844828-e934c1mujq5i3cuk041k5llaj2pvonse.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFlFHH8WDm0TebOkrc3bEqMIjzb4jR3og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622755844828-e934c1mujq5i3cuk041k5llaj2pvonse.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
